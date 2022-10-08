@@ -1,4 +1,5 @@
 import get from "./getElement.js";
+import { hideLoading } from "./toggleLoading.js";
 
 async function displayDrinks(data) {
   const { drinks } = data;
@@ -6,6 +7,7 @@ async function displayDrinks(data) {
   const title = get(".title");
   if (!drinks) {
     // hide loading
+    hideLoading();
     title.textContent = "sorry, no drinks matching your search";
     section.innerHTML = null;
     return;
@@ -25,6 +27,7 @@ async function displayDrinks(data) {
     })
     .join("");
   // hide loading
+  hideLoading();
   title.textContent = "";
   section.innerHTML = newDrinks;
   return section;
